@@ -2,9 +2,9 @@
 
 NetBeans plugin that integrates AsciidoctorJ
 
-![Screenshot 1](https://blogs.oracle.com/geertjan/resource/asciidoctor-j-1.png)
+![Screenshot 1](doc/img/asciidoctor_j_1.png)
 
-![Screenshot 2](https://blogs.oracle.com/geertjan/resource/asciidoctor-j-3.png)
+![Screenshot 2](doc/img/asciidoctor_j_3.png)
 
 To do:
 
