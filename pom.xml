@@ -46,11 +46,6 @@
     <dependencies>
         <dependency>
             <groupId>org.netbeans.api</groupId>
-            <artifactId>org-netbeans-api-progress-compat8</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-core-multiview</artifactId>
             <version>${netbeans.version}</version>
         </dependency>
@@ -123,6 +118,16 @@
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
             <version>1.35</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-util-ui</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-options-api</artifactId>
+            <version>${netbeans.version}</version>
         </dependency>
     </dependencies>
     <properties>
