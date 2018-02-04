@@ -4,6 +4,9 @@ v1.0, 2013-05-20: First draft
 :title: Sample Document
 :tags: [document, example]
 
+:toc:
+== Hello World
+Test
 
+== 
 Preamble....
-Hello

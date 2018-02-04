@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.netbeans.asciidoc.options;
+
+import javax.swing.*;
+import javax.swing.filechooser.*;
+import org.openide.util.*;
 
 final class AsciidoctorJ4NBPanel extends javax.swing.JPanel
 {
@@ -14,7 +13,6 @@ final class AsciidoctorJ4NBPanel extends javax.swing.JPanel
   {
     this.controller = controller;
     initComponents();
-    // TODO listen to changes in form fields and call controller.changed()
   }
 
   /**
@@ -26,46 +24,107 @@ final class AsciidoctorJ4NBPanel extends javax.swing.JPanel
   private void initComponents()
   {
 
+    fcGlobalStyle = new javax.swing.JFileChooser();
+    pStylesheets = new javax.swing.JPanel();
+    tfGlobStyle = new javax.swing.JTextField();
+    lblGlobStlye = new javax.swing.JLabel();
+    btnGlobalStyle = new javax.swing.JButton();
+
+    fcGlobalStyle.setDialogTitle(org.openide.util.NbBundle.getMessage(AsciidoctorJ4NBPanel.class, "AsciidoctorJ4NBPanel.fcGlobalStyle.dialogTitle")); // NOI18N
+    fcGlobalStyle.setFileFilter(new FileNameExtensionFilter("Stylesheets", "css"));
+
+    pStylesheets.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(AsciidoctorJ4NBPanel.class, "AsciidoctorJ4NBPanel.pStylesheets.border.title"))); // NOI18N
+    pStylesheets.setName(""); // NOI18N
+
+    tfGlobStyle.setText(org.openide.util.NbBundle.getMessage(AsciidoctorJ4NBPanel.class, "AsciidoctorJ4NBPanel.tfGlobStyle.text")); // NOI18N
+    tfGlobStyle.setMinimumSize(new java.awt.Dimension(150, 24));
+
+    org.openide.awt.Mnemonics.setLocalizedText(lblGlobStlye, org.openide.util.NbBundle.getMessage(AsciidoctorJ4NBPanel.class, "AsciidoctorJ4NBPanel.lblGlobStlye.text")); // NOI18N
+
+    org.openide.awt.Mnemonics.setLocalizedText(btnGlobalStyle, org.openide.util.NbBundle.getMessage(AsciidoctorJ4NBPanel.class, "AsciidoctorJ4NBPanel.btnGlobalStyle.text")); // NOI18N
+    btnGlobalStyle.addActionListener(new java.awt.event.ActionListener()
+    {
+      public void actionPerformed(java.awt.event.ActionEvent evt)
+      {
+        btnGlobalStyleActionPerformed(evt);
+      }
+    });
+
+    javax.swing.GroupLayout pStylesheetsLayout = new javax.swing.GroupLayout(pStylesheets);
+    pStylesheets.setLayout(pStylesheetsLayout);
+    pStylesheetsLayout.setHorizontalGroup(
+      pStylesheetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pStylesheetsLayout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(lblGlobStlye)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(tfGlobStyle, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(btnGlobalStyle)
+        .addContainerGap())
+    );
+    pStylesheetsLayout.setVerticalGroup(
+      pStylesheetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pStylesheetsLayout.createSequentialGroup()
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGroup(pStylesheetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(tfGlobStyle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(lblGlobStlye)
+          .addComponent(btnGlobalStyle))
+        .addGap(33, 33, 33))
+    );
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 202, Short.MAX_VALUE)
+      .addGroup(layout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(pStylesheets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap())
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 68, Short.MAX_VALUE)
+      .addGroup(layout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(pStylesheets, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(168, Short.MAX_VALUE))
     );
+
+    pStylesheets.getAccessibleContext().setAccessibleName(org.openide.util.NbBundle.getMessage(AsciidoctorJ4NBPanel.class, "AsciidoctorJ4NBPanel.pStylesheets.AccessibleContext.accessibleName")); // NOI18N
+    pStylesheets.getAccessibleContext().setAccessibleDescription(org.openide.util.NbBundle.getMessage(AsciidoctorJ4NBPanel.class, "AsciidoctorJ4NBPanel.pStylesheets.AccessibleContext.accessibleDescription")); // NOI18N
   }// </editor-fold>//GEN-END:initComponents
+
+  private void btnGlobalStyleActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnGlobalStyleActionPerformed
+  {//GEN-HEADEREND:event_btnGlobalStyleActionPerformed
+    // TODO add your handling cde here:
+    int returnVal = fcGlobalStyle.showOpenDialog(this);
+    if(returnVal == JFileChooser.APPROVE_OPTION){
+      tfGlobStyle.setText(fcGlobalStyle.getSelectedFile().getAbsolutePath());
+    }
+    
+  }//GEN-LAST:event_btnGlobalStyleActionPerformed
 
   void load()
   {
-    // TODO read settings and initialize GUI
-    // Example:        
-    // someCheckBox.setSelected(Preferences.userNodeForPackage(AsciidoctorJ4NBPanel.class).getBoolean("someFlag", false));
-    // or for org.openide.util with API spec. version >= 7.4:
-    // someCheckBox.setSelected(NbPreferences.forModule(AsciidoctorJ4NBPanel.class).getBoolean("someFlag", false));
-    // or:
-    // someTextField.setText(SomeSystemOption.getDefault().getSomeStringProperty());
+     tfGlobStyle.setText(NbPreferences.forModule(AsciidoctorJ4NBPanel.class).get("globalStylesheet", ""));
   }
 
   void store()
   {
-    // TODO store modified settings
-    // Example:
-    // Preferences.userNodeForPackage(AsciidoctorJ4NBPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
-    // or for org.openide.util with API spec. version >= 7.4:
-    // NbPreferences.forModule(AsciidoctorJ4NBPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
-    // or:
-    // SomeSystemOption.getDefault().setSomeStringProperty(someTextField.getText());
+     NbPreferences.forModule(AsciidoctorJ4NBPanel.class).put("globalStylesheet", tfGlobStyle.getText());
   }
 
   boolean valid()
   {
-    // TODO check whether form is consistent and complete
     return true;
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JButton btnGlobalStyle;
+  private javax.swing.JFileChooser fcGlobalStyle;
+  private javax.swing.JLabel lblGlobStlye;
+  private javax.swing.JPanel pStylesheets;
+  private javax.swing.JTextField tfGlobStyle;
   // End of variables declaration//GEN-END:variables
 }
